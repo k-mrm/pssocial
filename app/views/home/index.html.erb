@@ -1,8 +1,11 @@
-<h1>pssocial</h1>
-<p><b>pseudo social</b>: a simple SNS for study</p>
+<!DOCTYPE html>
+<body>
+  <h1>pssocial</h1>
+  <p><b>pseudo social</b>: a simple SNS for study</p>
 
-<% if user? %>
-  <%= render 'loggedin_page' %>
-<% else %>
-  <%= render 'not_loggedin_page' %>
-<% end %>
+  <% if user? %>
+    <%= render 'loggedin_page' %>
+  <% else %>
+    <%= render 'not_loggedin_page' %>
+  <% end %>
+</body>

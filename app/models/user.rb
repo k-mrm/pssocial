@@ -5,5 +5,5 @@ class User < ApplicationRecord
   # see: https://railsguides.jp/active_record_validations.html
   validates :screenname, length: { in: 1..100 }
   validates :username, length: { in: 1..20 }, format: { with: /\A[a-zA-z0-9_]+\z/ }
-  validates :profile, length: { in: 1..100 }
+  validates :profile, length: { maximum: 100 }
 end

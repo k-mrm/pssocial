@@ -1,1 +1,8 @@
+<% me = current_user %>
+<p>
+Hello, <%= me.screenname %> @<%= me.username %>
+</p>
+
+<h2>home</h2>
+
 <%= link_to 'logout', logout_path, method: :delete %>
