@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h3>
   <%= @user.screenname  %>
   <small class="text-muted">
@@ -26,11 +24,11 @@
   <%= @user.profile  %>
 </p>
 
-<h5><%= @user.posts.size %> Posts</h5>
+<h5><%= @user.posts.size %> Posts Follows Followers</h5>
 
 <ul class="list-group">
-  <% for p in @user.posts %>
-    <a class="list-group-item flex-column align-items-start list-group-item-action">
+  <% for p in @user.posts.reverse %>
+    <a href='<%="post/#{p.id}"%>', class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= @user.screenname %> <small>@<%= @user.username %></small></h5>
       </div>

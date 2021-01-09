@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :mypost?, only: [:edit, :update, :destroy]
+  before_action :checkpost, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -70,6 +70,14 @@ class PostsController < ApplicationController
     end
 
     def mypost?
+      @post.user_id == current_user.id
+    end
+
+    def checkpost
+      if !mypost?
+        redirect_to root_path
+        @post = nil
+      end
     end
 
     # Only allow a list of trusted parameters through.

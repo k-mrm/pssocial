@@ -1,6 +1,6 @@
 <% me = current_user %>
 <h5>
-Hello, <%= me.screenname %> @<%= me.username %>
+Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
 </h5>
 
 <p>
