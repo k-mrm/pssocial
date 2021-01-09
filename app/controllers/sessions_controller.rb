@@ -5,9 +5,15 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:session][:username])
 
-    if user && user.authenticate(params[:session][:password]) then
-      session[:user_id] = user.id
-      redirect_to root_url
+    if login user then
+      redirect_to root_path
+    else
+      render 'new'
     end
+  end
+
+  def destroy
+    logout
+    redirect_to root_path
   end
 end
