@@ -5,12 +5,23 @@ Hello, <%= me.screenname %> @<%= me.username %>
 
 <p>
   <%= form_for(:post, url: post_path) do |f| %>
-    <%= f.label :content %>
+    <%= f.label :content, 'Post' %>
     <%= f.text_area :content %>
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>
 </p>
 
-<h2>home</h2>
+<h2>Timeline</h2>
+
+<ul class="list-group">
+  <% for p in me.posts.reverse %>
+    <a class="list-group-item flex-column align-items-start list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= me.screenname %> <small>@<%= me.username %></small></h5>
+      </div>
+      <p class="mb-1"><%= p.content %></p>
+    </a>
+  <% end %>
+</ul>
 
 <%= link_to 'logout', logout_path, method: :delete %>
