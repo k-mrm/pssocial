@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   # see: https://railsguides.jp/active_record_validations.html
   validates :screenname, length: { in: 1..100 }

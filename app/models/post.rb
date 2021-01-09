@@ -1,3 +1,5 @@
 class Post < ApplicationRecord
-  belong_to :user
+  belongs_to :user
+
+  validates :content, length: { in: 0..500 }
 end

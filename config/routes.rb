@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+  get 'post/:id' => 'posts#show'
+  post 'post' => 'posts#create'
   get ':username' => 'users#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
