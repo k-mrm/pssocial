@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_105350) do
+ActiveRecord::Schema.define(version: 2021_01_09_210840) do
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "target_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"userid\", \"target_userid\"", name: "index_follows_on_userid_and_target_userid", unique: true
+    t.index ["target_user_id"], name: "index_follows_on_target_user_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content", null: false

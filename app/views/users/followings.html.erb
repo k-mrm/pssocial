@@ -1,0 +1,17 @@
+<h3>
+  <%= @user.screenname  %>
+  <small class="text-muted">
+    @<%= @user.username  %>
+  </small>
+  followings
+</h3>
+
+<ul class="list-group">
+  <% for f in @user.followings %>
+    <a href='<%="/#{f.username}"%>', class="list-group-item flex-column align-items-start list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"><%= f.screenname %> <small>@<%= f.username %></small></h5>
+      </div>
+    </a>
+  <% end %>
+</ul>

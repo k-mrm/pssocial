@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include PostsHelper
 
+  def require_login
+  end
+
   helper_method :user, :user?
 
   private 

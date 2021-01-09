@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :follows
   root 'home#index'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -9,6 +8,11 @@ Rails.application.routes.draw do
   get 'post/:id' => 'posts#show'
   post 'post' => 'posts#create'
   delete 'post/:id' => 'posts#destroy'
+  post 'follow/:id' => 'follows#create'
+  delete 'follow/:id' => 'follows#destroy'
+  get ':username/followings' => 'users#followings'
+  get ':username/followers' => 'users#followers'
   get ':username' => 'users#show'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

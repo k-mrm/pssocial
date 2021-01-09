@@ -13,10 +13,14 @@
 <button type="button" class="btn btn-secondary">
   edit profile
 </button>
+<% elsif user.following? @user  %>
+  <%= link_to "follow/#{@user.id}", class: "btn btn-danger", method: :delete do %>
+    Unfollow
+  <% end %>
 <% else %>
-<button type="button" class="btn btn-primary">
-  Follow
-</button>
+  <%= link_to "follow/#{@user.id}", class: "btn btn-primary", method: :post do %>
+    Follow
+  <% end %>
 <% end %>
 </p>
 
@@ -24,7 +28,14 @@
   <%= @user.profile  %>
 </p>
 
-<h5><%= @user.posts.size %> Posts Follows Followers</h5>
+  <%= @user.username  %>
+  <%= user.username  %>
+
+<h5>
+  <%= @user.posts.size %> Posts
+  <a href='<%="#{@user.username}/followings"%>'><%= @user.followings.size %> Followings</a>
+  <a href='<%="#{@user.username}/followers"%>'><%= @user.followers.size %> Followers</a>
+</h5>
 
 <ul class="list-group">
   <% for p in @user.posts.reverse %>

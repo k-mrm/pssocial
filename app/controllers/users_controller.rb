@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers]
   before_action :checkuser, only: [:edit, :update, :destroy]
 
   # GET /users
@@ -20,6 +20,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def followings
+  end
+
+  def followers
   end
 
   # POST /users
