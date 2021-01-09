@@ -1,13 +1,21 @@
 <% owner = @post.user %>
 <h5>
-  <%= owner.screenname  %>
-  <small class="text-muted">
-    @<%= owner.username  %>
-  </small>
+  <a href='<%= "/#{owner.username}" %>'>
+    <%= owner.screenname  %>
+    <small class="text-muted">
+      @<%= owner.username  %>
+    </small>
+  </a>
 </h5>
 <p> 
 <%= @post.updated_at %>
 </p>
 <h4> 
 <%= @post.content %>
-</h4>
+</h4> 
+
+<% if mypost? %>
+  <p>
+  <%= link_to 'delete', "#{post_path}/#{@post.id}", method: :delete %>
+  </p>
+<% end %>

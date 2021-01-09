@@ -1,7 +1,11 @@
+<p> <%= notice %> </p>
+
 <% me = current_user %>
 <h5>
 Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
 </h5>
+
+<%= link_to 'logout', logout_path, method: :delete %>
 
 <p>
   <%= form_for(:post, url: post_path) do |f| %>
@@ -15,7 +19,7 @@ Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
 
 <ul class="list-group">
   <% for p in me.posts.reverse %>
-    <a class="list-group-item flex-column align-items-start list-group-item-action">
+    <a href='<%="post/#{p.id}"%>'class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= me.screenname %> <small>@<%= me.username %></small></h5>
       </div>
@@ -23,5 +27,3 @@ Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
     </a>
   <% end %>
 </ul>
-
-<%= link_to 'logout', logout_path, method: :delete %>

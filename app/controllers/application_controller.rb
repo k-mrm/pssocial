@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include UsersHelper
+  include PostsHelper
 
   helper_method :user, :user?
 
