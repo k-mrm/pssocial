@@ -15,11 +15,11 @@
     <% end %>
 
     <%= f.label :username %>
-    @<%= f.text_field :username, value: @user.username %>
+    @<%= f.text_field :username, value: @user.username, class: "form-control" %>
     <%= f.label :screenname %>
-    <%= f.text_field :screenname, value: @user.screenname %>
+    <%= f.text_field :screenname, value: @user.screenname, class: "form-control" %>
     <%= f.label :profile %>
-    <%= f.text_area :profile, value: @user.profile %>
+    <%= f.text_area :profile, value: @user.profile, class: "form-control" %>
     <%= f.submit "edit profile", class: "btn btn-secondary", method: :patch %>
   <% end %>
 </p>
