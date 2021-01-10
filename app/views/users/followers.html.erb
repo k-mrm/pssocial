@@ -11,8 +11,11 @@
     <a href='<%="/#{f.username}"%>', class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= f.screenname %> <small>@<%= f.username %></small></h5>
-        <% if user_me?(f) %>
+        <% if user_me? f %>
           <small><span class="badge badge-secondary">You</span></small>
+        <% end %>
+        <% if user.following? f %>
+          <small><span class="badge badge-primary">Following</span></small>
         <% end %>
       </div>
     </a>

@@ -14,6 +14,9 @@
         <% if user_me?(f) %>
           <small><span class="badge badge-secondary">You</span></small>
         <% end %>
+        <% if user.followed_by f %>
+          <small><span class="badge badge-success">Follower</span></small>
+        <% end %>
       </div>
     </a>
   <% end %>
