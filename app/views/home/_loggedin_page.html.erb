@@ -1,8 +1,7 @@
 <p> <%= notice %> </p>
 
-<% me = current_user %>
 <h5>
-Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
+Hello, <%= link_to "#{user.screenname} @#{user.username}", user.username %>
 </h5>
 
 <%= link_to 'logout', logout_path, method: :delete %>
@@ -18,10 +17,10 @@ Hello, <%= link_to "#{me.screenname} @#{me.username}", me.username %>
 <h2>Timeline</h2>
 
 <ul class="list-group">
-  <% for p in me.posts.reverse %>
+  <% for p in user.posts.reverse %>
     <a href='<%="post/#{p.id}"%>'class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"><%= me.screenname %> <small>@<%= me.username %></small></h5>
+        <h5 class="mb-1"><%= user.screenname %> <small>@<%= user.username %></small></h5>
       </div>
       <p class="mb-1"><%= p.content %></p>
     </a>

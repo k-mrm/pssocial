@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user?
-    loggedin?
+    !current_user.nil?
   end
 end
