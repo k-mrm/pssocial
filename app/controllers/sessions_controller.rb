@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if login user then
       redirect_to root_path
     else
-      render 'new'
+      redirect_to login_path, alert: 'invalid username or password'
     end
   end
 
