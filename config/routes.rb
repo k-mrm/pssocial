@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get ':username/followers' => 'users#followers'
   get ':username' => 'users#show'
 
+  get '*path', to: 'application#render_404'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -28,7 +28,7 @@ class User < ApplicationRecord
     followings.include? target
   end
 
-  def follower?(target)
+  def followed_by(target)
     followers.include? target
   end
 end

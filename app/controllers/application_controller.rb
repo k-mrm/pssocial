@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   include PostsHelper
 
   def require_login
+    if !user?
+      redirect_to login_path
+    end
+  end
+
+  def render_404
+    render template: "errors/404"
   end
 
   helper_method :user, :user?

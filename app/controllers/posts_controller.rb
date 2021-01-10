@@ -61,7 +61,7 @@ class PostsController < ApplicationController
     end
 
     def checkpost
-      if !mypost?
+      if !mypost? && !current_user.admin
         redirect_to root_path
         @post = nil
       end

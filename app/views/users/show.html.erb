@@ -9,27 +9,30 @@
 </h3>
 
 <p>
-<% if user_me? %>
+<% if user_me? then %>
 <button type="button" class="btn btn-secondary">
   edit profile
 </button>
-<% elsif user.following? @user  %>
+<% elsif !user.nil? and user.following? @user then %>
   <%= link_to "follow/#{@user.id}", class: "btn btn-danger", method: :delete do %>
     Unfollow
   <% end %>
 <% else %>
-  <%= link_to "follow/#{@user.id}", class: "btn btn-primary", method: :post do %>
+  <%= link_to "follow/#{@user.id}", class: "btn btn-outline-primary", method: :post do %>
     Follow
   <% end %>
 <% end %>
 </p>
 
 <p>
-  <%= @user.profile  %>
+<% if !user.nil? and user.followed_by @user then %>
+  This user is following you
+<% end %>
 </p>
 
-  <%= @user.username  %>
-  <%= user.username  %>
+<p>
+  <%= @user.profile  %>
+</p>
 
 <h5>
   <%= @user.posts.size %> Posts
@@ -42,8 +45,9 @@
     <a href='<%="post/#{p.id}"%>', class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= @user.screenname %> <small>@<%= @user.username %></small></h5>
+        <small><%=p.created_at%></small>
       </div>
-      <p class="mb-1"><%= p.content %></p>
+      <h6 class="mb-1"><%= p.content %></h6>
     </a>
   <% end %>
 </ul>

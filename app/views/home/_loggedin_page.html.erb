@@ -9,20 +9,23 @@ Hello, <%= link_to "#{user.screenname} @#{user.username}", user.username %>
 <p>
   <%= form_for(:post, url: post_path) do |f| %>
     <%= f.label :content, 'Post' %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "form-control" %>
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>
 </p>
 
 <h2>Timeline</h2>
+<% timeline_acc = user.followings.map{|f| f.id} << user.id %>
+<% timeline = Post.all.where(user_id: timeline_acc).order("created_at DESC") %>
 
 <ul class="list-group">
-  <% for p in user.posts.reverse %>
+  <% for p in timeline %>
     <a href='<%="post/#{p.id}"%>'class="list-group-item flex-column align-items-start list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1"><%= user.screenname %> <small>@<%= user.username %></small></h5>
+        <h5 class="mb-1"><%= p.user.screenname %> <small>@<%= p.user.username %></small></h5>
+        <small><%=p.created_at%></small>
       </div>
-      <p class="mb-1"><%= p.content %></p>
+      <h6 class="mb-1"><%= p.content %></h6>
     </a>
   <% end %>
 </ul>

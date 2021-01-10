@@ -14,7 +14,7 @@
 <%= @post.content %>
 </h4> 
 
-<% if mypost? %>
+<% if mypost? || current_user.admin %>
   <p>
   <%= link_to 'delete', "#{post_path}/#{@post.id}", method: :delete %>
   </p>
