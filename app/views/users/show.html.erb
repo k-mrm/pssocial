@@ -11,6 +11,10 @@
 </h3>
 
 <p>
+  <%= @user.profile  %>
+</p>
+
+<p>
 <% if user_me? then %>
   <%= link_to "#{@user.username}/edit", class: "btn btn-secondary" do %>
     Edit profile
@@ -30,10 +34,6 @@
 <% if !user.nil? and user.followed_by @user then %>
   This user is following you
 <% end %>
-</p>
-
-<p>
-  <%= @user.profile  %>
 </p>
 
 <h5>
