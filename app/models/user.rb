@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   # see: https://railsguides.jp/active_record_validations.html
   validates :screenname, length: { in: 1..100 }
-  validates :username, length: { in: 1..20 }, format: { with: /\A[a-zA-z0-9_]+\z/ }
+  validates :username, length: { in: 1..20 }, format: { with: /\A[a-zA-z0-9_]+\z/ }, uniqueness: true
+  validates :email, uniqueness: true
   validates :profile, length: { maximum: 100 }
 
   def follow(target)
