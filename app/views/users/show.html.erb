@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h3>
   <%= @user.screenname  %>
   <small class="text-muted">
@@ -10,9 +12,9 @@
 
 <p>
 <% if user_me? then %>
-<button type="button" class="btn btn-secondary">
-  edit profile
-</button>
+  <%= link_to "#{@user.username}/edit", class: "btn btn-secondary" do %>
+    Edit profile
+  <% end %>
 <% elsif !user.nil? and user.following? @user then %>
   <%= link_to "follow/#{@user.id}", class: "btn btn-danger", method: :delete do %>
     Unfollow

@@ -1,6 +1,25 @@
-<h1>Editing User</h1>
+<h2>Edit Profile</h2>
 
-<%= render 'form', user: @user %>
+<p>
+<%= form_for(@user, url: {action: "update"}) do |f| %>
+    <% if f.object.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+        <ul>
+          <% f.object.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :username %>
+    @<%= f.text_field :username, value: @user.username %>
+    <%= f.label :screenname %>
+    <%= f.text_field :screenname, value: @user.screenname %>
+    <%= f.label :profile %>
+    <%= f.text_area :profile, value: @user.profile %>
+    <%= f.submit "edit profile", class: "btn btn-secondary", method: :patch %>
+  <% end %>
+</p>
