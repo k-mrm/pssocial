@@ -1,11 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :checkpost, only: [:edit, :update, :destroy]
-
-  # GET /posts
-  # GET /posts.json
-  def index
-  end
+  before_action :set_post, only: [:show, :destroy]
+  before_action :checkpost_owner, only: [:destroy]
 
   # GET /posts/1
   # GET /posts/1.json
@@ -15,10 +10,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-  end
-
-  # GET /posts/1/edit
-  def edit
   end
 
   # POST /posts
@@ -39,11 +30,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
-  def update
-  end
-
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
@@ -60,7 +46,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def checkpost
+    def checkpost_owner
       if !mypost? && !current_user.admin
         redirect_to root_path
         @post = nil
